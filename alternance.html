@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-title-fr="Clément Bouteiller — Mon alternance" data-title-en="Clément Bouteiller — My apprenticeship">Clément Bouteiller — Mon alternance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --dark:  #0F1F2E;
+  --beige: #EDE8DF;
+  --text:  #1A1410;
+  --muted: #5C5248;
+  --accent:#CC0000;
+  --white: #FFFFFF;
+  --border:rgba(255,255,255,0.10);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Open Sans', sans-serif; background: var(--beige); color: #999990; }
+
+nav {
+  background: var(--dark); padding: 0 6rem; height: 75px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo span { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 800; color: #fff; letter-spacing: .04em; }
+.nav-logo span b { color: var(--accent); }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a {
+  font-family: 'Raleway', sans-serif; font-size: .82rem; font-weight: 600; letter-spacing: .05em;
+  color: rgba(255,255,255,0.75); text-decoration: none; transition: color .2s;
+  position: relative; padding-bottom: 4px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--accent); transition: width .3s ease;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--white); font-weight: 700; }
+.nav-links a.active::after { width: 100%; }
+
+.page {
+  min-height: calc(100vh - 75px - 140px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 4rem 6rem; text-align: center; gap: 3rem;
+}
+
+.coming-soon {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.5rem; font-weight: 800;
+  color: #999990;
+}
+.coming-soon span { color: #999990; }
+
+.maif-logo { width: 420px; height: auto; opacity: .9; }
+
+footer {
+  background: var(--dark); padding: 2.4rem 6rem; text-align: center;
+}
+.footer-label {
+  font-family: 'Raleway', sans-serif; font-size: .72rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: #fff; margin-bottom: 1rem;
+}
+.footer-icons { display: flex; align-items: center; justify-content: center; gap: 1.6rem; margin-bottom: 1.4rem; }
+.footer-icon {
+  width: 38px; height: 38px; border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: #fff; text-decoration: none; font-size: .9rem;
+  transition: border-color .2s, color .2s;
+}
+.footer-icon:hover { border-color: var(--accent); color: var(--accent); }
+.footer-icon.icon-mail { display: flex; align-items: center; justify-content: center; font-size: .9rem; } .footer-icon.icon-mail svg { width: 14px; height: 14px; }
+@media (max-width: 860px) { .footer-icon { width: 58px; height: 58px; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; } .footer-icon.icon-mail { font-size: 1.3rem; } .footer-icon svg { width: 26px; height: 26px; } .footer-icon.icon-mail svg { width: 26px; height: 26px; } .footer-icons { gap: 2.2rem; } }
+.footer-logo-img { display: flex; justify-content: center; margin-bottom: .6rem; }
+.footer-copy { font-size: .7rem; color: rgba(255,255,255,.3); }
+
+
+/* ── BURGER MENU ── */
+.burger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.burger span { display:block; width:22px; height:2px; background:#fff; border-radius:2px; transition:all .3s; }
+.burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity:0; }
+.burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.nav-mobile { display:none !important; flex-direction:column; background:var(--dark); padding:1rem 1.5rem; gap:.5rem; }
+.nav-mobile a { font-family:'Raleway',sans-serif; font-size:.9rem; font-weight:600; color:rgba(255,255,255,.8); text-decoration:none; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,.07); }
+.nav-mobile a:last-child { border-bottom:none; }
+.nav-mobile a.active { color:#fff; }
+.nav-mobile.open { display:flex !important; }
+.nav-mobile .lang-toggle-wrap { padding:.6rem 0 0; }
+@media (max-width: 860px) {
+  nav { padding:0 1.5rem; }
+  .nav-links { display:none !important; }
+  .lang-toggle-wrap { display:none !important; }
+  .burger { display:flex; }
+  .nav-mobile.open { display:flex; }
+}
+
+/* ── LANG TOGGLE ── */
+.lang-toggle-wrap { display:flex; align-items:center; gap:4px; margin-left:1.5rem; }
+.lang-btn { font-family:'Raleway',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.06em; color:rgba(255,255,255,.5); background:transparent; border:1.5px solid rgba(255,255,255,.2); border-radius:4px; padding:3px 8px; cursor:pointer; transition:all .2s; }
+.lang-btn.active { color:#fff; border-color:#4CAF50; background:#4CAF50; }
+.lang-btn:hover:not(.active) { color:#fff; border-color:rgba(255,255,255,.5); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><span>BUT <b>Science des Données</b></span></div>
+  <ul class="nav-links">
+    <li><a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a></li>
+    <li><a href="apropos.html" data-fr="À propos de moi" data-en="About me">À propos de moi</a></li>
+    <li><a href="#" class="active" data-fr="Mon alternance" data-en="My apprenticeship">Mon alternance</a></li>
+    <li><a href="projets.html" data-fr="Mes projets" data-en="My projects">Mes projets</a></li>
+    <li><a href="bilans.html" data-fr="Mes bilans" data-en="My reviews">Mes bilans</a></li>
+    <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;">
+  <div class="lang-toggle-wrap"><button class="lang-btn active" id="btn-fr" onclick="setLangBtn('fr')">FR</button><button class="lang-btn" id="btn-en" onclick="setLangBtn('en')">EN</button></div>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="apropos.html" data-fr="À propos de moi" data-en="About me">À propos de moi</a>
+  <a href="alternance.html" class="active" data-fr="Mon alternance" data-en="My apprenticeship">Mon alternance</a>
+  <a href="projets.html" data-fr="Mes projets" data-en="My projects">Mes projets</a>
+  <a href="bilans.html" data-fr="Mes bilans" data-en="My reviews">Mes bilans</a>
+  <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+  <div class="lang-toggle-wrap"><button class="lang-btn active" id="btn-fr-mobile" onclick="setLangBtn('fr')">FR</button><button class="lang-btn" id="btn-en-mobile" onclick="setLangBtn('en')">EN</button></div>
+</div>
+
+<div class="page">
+  <p class="coming-soon" data-fr="À venir..." data-en="Coming soon...">À venir<span>...</span></p>
+  <img src="logo_maif.png" alt="MAIF" class="maif-logo">
+</div>
+
+<footer id="contact">
+  <p class="footer-label" data-fr="Contact" data-en="Contact">Contact</p>
+  <div class="footer-icons">
+    <a class="footer-icon icon-mail" href="#" onclick="copyText('bouteillerclemen@gmail.com');return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:1em;height:1em;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+    <a class="footer-icon" href="#" onclick="handlePhone();return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:1em;height:1em;" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></a>
+    <a class="footer-icon" href="https://www.linkedin.com/in/cl%C3%A9ment-bouteiller-788163401/" target="_blank">in</a>
+  </div>
+  <div class="footer-logo-img">
+    <span style="font-family:'Raleway',sans-serif;font-size:.9rem;font-weight:800;color:#fff;letter-spacing:.06em;">BUT <span style="color:var(--accent);">Science des Données</span></span>
+  </div>
+  <p class="footer-copy">© 2026 Clément Bouteiller · BUT Science des Données</p>
+</footer>
+
+<div id="toast" style="position:fixed;bottom:60px;right:30px;transform:translateY(20px);background:var(--dark);color:#fff;font-family:Raleway,sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.04em;padding:12px 28px;border-radius:4px;opacity:0;transition:opacity .25s,transform .25s;z-index:999;border-left:3px solid var(--accent);"></div>
+<style>#toast.show { opacity:1 !important; transform:translateY(0) !important; }</style>
+<script>
+function handlePhone() {
+  if (window.innerWidth <= 860) {
+    window.location.href = "tel:+33768388726";
+  } else {
+    copyText("0768388726");
+  }
+}
+function copyText(text) {
+  var t = document.getElementById("toast");
+  t.textContent = text;
+  t.style.opacity = "0";
+  t.style.transform = "translateY(20px)";
+  t.classList.add("show");
+  setTimeout(function(){ t.classList.remove("show"); }, 3000);
+}
+</script>
+<script src="lang.js"></script>
+<script>
+// Burger menu
+var burger = document.getElementById('burger');
+var navMobile = document.getElementById('nav-mobile');
+if (burger) {
+  burger.addEventListener('click', function() {
+    burger.classList.toggle('open');
+    navMobile.classList.toggle('open');
+  });
+}
+</script>
+</body>
+</html>

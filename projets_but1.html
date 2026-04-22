@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-title-fr="Clément Bouteiller — Projets BUT 1" data-title-en="Clément Bouteiller — BUT 1 Projects">Clément Bouteiller — Projets BUT 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --dark:   #0F1F2E;
+  --beige:  #EDE8DF;
+  --text:   #1A1410;
+  --muted:  #5C5248;
+  --accent: #CC0000;
+  --white:  #FFFFFF;
+  --border: rgba(26,20,16,0.08);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Open Sans', sans-serif; background: var(--beige); color: var(--text); }
+nav {
+  background: var(--dark); padding: 0 6rem; height: 75px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo span { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 800; color: #fff; letter-spacing: .04em; }
+.nav-logo span b { color: var(--accent); }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; flex: 1; justify-content: center; }
+.nav-links a {
+  font-family: 'Raleway', sans-serif; font-size: .82rem; font-weight: 600; letter-spacing: .05em;
+  color: rgba(255,255,255,0.75); text-decoration: none; transition: color .2s;
+  position: relative; padding-bottom: 4px;
+}
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width .3s ease; }
+.nav-links a:hover { color: #fff; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: #fff; font-weight: 700; }
+.nav-links a.active::after { width: 100%; }
+.page-header { padding: 3.5rem 6rem 0; background: var(--beige); }
+.breadcrumb { font-size: .75rem; color: var(--muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
+.breadcrumb a { color: var(--accent); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.page-header p.label { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+.page-header h1 { font-family: 'Raleway', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--accent); }
+.projets { padding: 3rem 6rem 5rem; display: flex; flex-direction: column; gap: 2rem; }
+.projet-card { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 2rem 2.5rem; transition: box-shadow .2s; }
+.projet-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
+.projet-num { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
+.projet-title { font-family: 'Raleway', sans-serif; font-size: 1.15rem; font-weight: 800; color: var(--text); margin-bottom: .8rem; }
+.projet-desc { font-size: .9rem; line-height: 1.8; color: var(--muted); text-align: justify; }
+.projet-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
+.tag { background: rgba(204,0,0,.07); border: 1px solid rgba(204,0,0,.2); color: var(--accent); font-size: .72rem; font-weight: 600; letter-spacing: .05em; padding: 4px 12px; border-radius: 100px; }
+.outils { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.2rem; align-items: center; }
+.outil-badge { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.outil-badge img { width: 42px; height: 42px; border-radius: 50%; object-fit: contain; border: 1.5px solid var(--border); background: #fff; padding: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+.outil-badge span { font-size: .6rem; font-weight: 600; color: var(--muted); letter-spacing: .03em; }
+footer { background: var(--dark); padding: 2.4rem 6rem; text-align: center; }
+.footer-label { font-family: 'Raleway', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin-bottom: 1rem; }
+.footer-icons { display: flex; align-items: center; justify-content: center; gap: 1.6rem; margin-bottom: 1.4rem; }
+.footer-icon {
+  width: 38px; height: 38px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #ffffff;
+  text-decoration: none; font-size: .9rem;
+  transition: border-color .2s, color .2s;
+}
+@media (max-width: 860px) { .footer-icon { width: 58px; height: 58px; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; } .footer-icon.icon-mail { font-size: 1.3rem; } .footer-icon svg { width: 26px; height: 26px; } .footer-icon.icon-mail svg { width: 26px; height: 26px; } .footer-icons { gap: 2.2rem; } }
+.footer-icon:hover { border-color: var(--accent); color: var(--accent); }
+.footer-icon.icon-mail { display: flex; align-items: center; justify-content: center; font-size: .9rem; } .footer-icon.icon-mail svg { width: 14px; height: 14px; }
+
+.footer-logo-img { display: flex; justify-content: center; margin-bottom: .6rem; }
+.footer-copy { font-size: .7rem; color: rgba(255,255,255,.3); }
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+.projet-card:nth-child(1) { animation: fadeUp .5s ease both .1s; }
+.projet-card:nth-child(2) { animation: fadeUp .5s ease both .2s; }
+.projet-card:nth-child(3) { animation: fadeUp .5s ease both .3s; }
+.projet-card:nth-child(4) { animation: fadeUp .5s ease both .4s; }
+.projet-card:nth-child(5) { animation: fadeUp .5s ease both .5s; }
+.projet-card:nth-child(6) { animation: fadeUp .5s ease both .6s; }
+.projet-card:nth-child(7) { animation: fadeUp .5s ease both .7s; }
+.projet-card:nth-child(8) { animation: fadeUp .5s ease both .8s; }
+
+/* ── RESPONSIVE TABLETTE ── */
+@media (max-width: 1100px) {
+  nav { padding: 0 3rem; }
+  footer { padding: 2.4rem 3rem; }
+}
+@media (max-width: 860px) { nav { padding: 0 1.5rem; } .nav-links { display: none; } .page-header { padding: 2rem 1.5rem 0; } .projets { padding: 2rem 1.5rem 3rem; } .projet-card { padding: 1.5rem; } footer { padding: 2rem 1.5rem; } .outils { gap:.6rem; } }
+.burger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.burger span { display:block; width:22px; height:2px; background:#fff; border-radius:2px; transition:all .3s; }
+.burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity:0; }
+.burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+@media (max-width: 860px) { .burger { display:flex; } .lang-toggle-wrap { display:none !important; } .nav-mobile.open { display:flex; } }
+/* ── SEARCH BAR ── */
+.search-wrap { padding: 1.5rem 6rem 0; }
+.search-box {
+  display: flex; align-items: center; gap: 10px;
+  background: #fff; border: 1.5px solid var(--border-light, rgba(26,20,16,0.12));
+  border-radius: 8px; padding: 10px 16px;
+  max-width: 480px; transition: border-color .2s;
+}
+.search-box:focus-within { border-color: var(--accent); }
+.search-box svg { flex-shrink: 0; color: var(--muted); }
+.search-box input {
+  border: none; outline: none; background: transparent;
+  font-family: 'Open Sans', sans-serif; font-size: .88rem;
+  color: var(--text); width: 100%;
+}
+.search-box input::placeholder { color: var(--muted); opacity: .7; }
+.search-no-result {
+  display: none; text-align: center; padding: 3rem 0;
+  font-family: 'Raleway', sans-serif; font-size: 1rem;
+  font-weight: 700; color: var(--muted);
+}
+.projet-card.hidden { display: none; }
+@media (max-width: 860px) { .search-wrap { padding: 1.5rem 1.5rem 0; } }
+.nav-mobile { display:none !important; flex-direction:column; background:var(--dark); padding:1rem 1.5rem; gap:.5rem; }
+.nav-mobile a { font-family:'Raleway',sans-serif; font-size:.9rem; font-weight:600; color:rgba(255,255,255,.8); text-decoration:none; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,.07); }
+.nav-mobile a:last-child { border-bottom:none; }
+.nav-mobile a.active { color:#fff; }
+.nav-mobile.open { display:flex !important; }
+.nav-mobile .lang-toggle-wrap { padding:.6rem 0 0; }
+.lang-toggle-wrap { display:flex; align-items:center; gap:4px; margin-left:1.5rem; }
+.lang-btn { font-family:'Raleway',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.06em; color:rgba(255,255,255,.5); background:transparent; border:1.5px solid rgba(255,255,255,.2); border-radius:4px; padding:3px 8px; cursor:pointer; transition:all .2s; }
+.lang-btn.active { color:#fff; border-color:#4CAF50; background:#4CAF50; }
+.lang-btn:hover:not(.active) { color:#fff; border-color:rgba(255,255,255,.5); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><span>BUT <b>Science des Données</b></span></div>
+  <ul class="nav-links">
+    <li><a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a></li>
+    <li><a href="apropos.html" data-fr="À propos de moi" data-en="About me">À propos de moi</a></li>
+    <li><a href="alternance.html" data-fr="Mon alternance" data-en="My apprenticeship">Mon alternance</a></li>
+    <li><a href="projets.html" class="active" data-fr="Mes projets" data-en="My projects">Mes projets</a></li>
+    <li><a href="bilans.html" data-fr="Mes bilans" data-en="My reviews">Mes bilans</a></li>
+    <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:1rem;">
+  <div class="lang-toggle-wrap"><button class="lang-btn active" id="btn-fr" onclick="setLangBtn('fr')">FR</button><button class="lang-btn" id="btn-en" onclick="setLangBtn('en')">EN</button></div>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="apropos.html" data-fr="À propos de moi" data-en="About me">À propos de moi</a>
+  <a href="alternance.html" data-fr="Mon alternance" data-en="My apprenticeship">Mon alternance</a>
+  <a href="projets.html" class="active" data-fr="Mes projets" data-en="My projects">Mes projets</a>
+  <a href="bilans.html" data-fr="Mes bilans" data-en="My reviews">Mes bilans</a>
+  <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+  <div class="lang-toggle-wrap"><button class="lang-btn active" id="btn-fr-mobile" onclick="setLangBtn('fr')">FR</button><button class="lang-btn" id="btn-en-mobile" onclick="setLangBtn('en')">EN</button></div>
+</div>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="projets.html" data-fr="← Mes projets" data-en="← My projects">← Mes projets</a><span>/</span><span data-fr="BUT 1" data-en="BUT 1">BUT 1</span></div>
+  <p class="label" data-fr="Première année · 2025 - 2026" data-en="First year · 2025 - 2026">Première année · 2025 - 2026</p>
+  <h1 data-fr="Projets BUT 1" data-en="BUT 1 Projects">Projets BUT 1</h1>
+</div>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="search-input" placeholder="Rechercher un projet par mots clés" data-placeholder-fr="Rechercher un projet par mots clés" data-placeholder-en="Search a project by keywords">
+  </div>
+</div>
+
+<div class="projets">
+
+  <div class="projet-card">
+    <p class="projet-num" data-fr="Projet 01" data-en="Project 01">Projet 01</p>
+    <h2 class="projet-title" data-fr="GreenSD — Application de gestion logistique verte" data-en="GreenSD, Green logistics management application">GreenSD — Application de gestion logistique verte</h2>
+    <img src="img_greensd.png" style="width:100%;border-radius:6px;margin:1rem 0;object-fit:contain;">
+    <p class="projet-desc" data-fr="Dans ce projet mené en binôme, nous avons développé une application complète pour une entreprise de logistique écologique. Le travail comprenait le nettoyage et l'intégration de données CSV dans une base MySQL, ainsi que la création d'une interface graphique permettant de visualiser les tables, effectuer des insertions et exécuter des requêtes SQL. L'application suit les livraisons, les véhicules écologiques, les tournées des livreurs et les émissions CO2 estimées. Nous avons également intégré un chatbot directement dans l'interface pour guider l'utilisateur et lui expliquer le fonctionnement de l'application." data-en="In this project carried out as a pair, we developed a complete application for an ecological logistics company. The work included cleaning and integrating CSV data into a MySQL database, as well as creating a graphical interface to visualize tables, perform insertions and run SQL queries. The application tracks deliveries, eco-friendly vehicles, delivery routes and estimated CO2 emissions. We also integrated a chatbot directly into the interface to guide the user and explain how the application works.">Dans ce projet mené en binôme, nous avons développé une application complète pour une entreprise de logistique écologique. Le travail comprenait le nettoyage et l'intégration de données CSV dans une base MySQL, ainsi que la création d'une interface graphique permettant de visualiser les tables, effectuer des insertions et exécuter des requêtes SQL. L'application suit les livraisons, les véhicules écologiques, les tournées des livreurs et les émissions CO2 estimées. Nous avons également intégré un chatbot directement dans l'interface pour guider l'utilisateur et lui expliquer le fonctionnement de l'application.</p>
+    <div class="projet-tags">
+      <span class="tag" data-fr="Base de données" data-en="Database">Base de données</span>
+      <span class="tag" data-fr="Travail en équipe" data-en="Teamwork">Travail en équipe</span>
+      <span class="tag" data-fr="Rigueur" data-en="Rigour">Rigueur</span>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.2rem;">
+      <a href="greensd.py" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#CC0000;color:#fff;font-family:Raleway,sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.05em;padding:10px 22px;border-radius:5px;text-decoration:none;" onmouseover="this.style.background='#aa0000'" onmouseout="this.style.background='#CC0000'" data-fr="💾 Script principal" data-en="💾 Main script">💾 Script principal</a>
+      <a href="greensd_ihm.py" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#CC0000;color:#fff;font-family:Raleway,sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.05em;padding:10px 22px;border-radius:5px;text-decoration:none;" onmouseover="this.style.background='#aa0000'" onmouseout="this.style.background='#CC0000'" data-fr="💾 Script interface" data-en="💾 Interface script">💾 Script interface</a>
+    </div>
+  </div>
+
+  <div class="projet-card">
+    <p class="projet-num" data-fr="Projet 02" data-en="Project 02">Projet 02</p>
+    <h2 class="projet-title" data-fr="Gestion de fichiers : conversion JSON vers CSV en Python" data-en="File management: JSON to CSV conversion in Python">Gestion de fichiers : conversion JSON vers CSV en Python</h2>
+    <img src="img_python.png" style="width:100%;border-radius:6px;margin:1rem 0;object-fit:contain;">
+    <p class="projet-desc" data-fr="Dans ce projet réalisé en binôme, nous avons développé un script Python permettant de lire un fichier JSON contenant des données de concentration de polluants dans l'air, de les nettoyer et de les exporter en fichier CSV exploitable sous Excel. Le programme gère les erreurs de fichier introuvable, filtre les lignes incomplètes et reformate les dates. Ce projet nous a permis de manipuler des données réelles et de produire un outil fonctionnel de traitement automatisé." data-en="In this project carried out as a pair, we developed a Python script to read a JSON file containing air pollutant concentration data, clean it and export it as a CSV file usable in Excel. The program handles file-not-found errors, filters incomplete rows and reformats dates. This project allowed us to work with real data and produce a functional automated processing tool.">Dans ce projet réalisé en binôme, nous avons développé un script Python permettant de lire un fichier JSON contenant des données de concentration de polluants dans l'air, de les nettoyer et de les exporter en fichier CSV exploitable sous Excel. Le programme gère les erreurs de fichier introuvable, filtre les lignes incomplètes et reformate les dates. Ce projet nous a permis de manipuler des données réelles et de produire un outil fonctionnel de traitement automatisé.</p>
+    <div class="projet-tags"><span class="tag" data-fr="Programmation" data-en="Programming">Programmation</span><span class="tag" data-fr="Persévérance" data-en="Perseverance">Persévérance</span><span class="tag" data-fr="Adaptabilité" data-en="Adaptability">Adaptabilité</span></div>
+    <a href="sae_gestion_fichiers.py" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:1.2rem;background:#CC0000;color:#fff;font-family:Raleway,sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.05em;padding:10px 22px;border-radius:5px;text-decoration:none;" onmouseover="this.style.background='#aa0000'" onmouseout="this.style.background='#CC0000'" data-fr="💾 Télécharger le script" data-en="💾 Download script">💾 Télécharger le script</a>
+  </div>
+
+  <div class="projet-card">
+    <p class="projet-num" data-fr="Projet 03" data-en="Project 03">Projet 03</p>
+    <h2 class="projet-title" data-fr="Tableau de bord de gestion des notes — Excel VBA" data-en="Grade management dashboard, Excel VBA">Tableau de bord de gestion des notes — Excel VBA</h2>
+    <img src="img_excel.png" style="width:100%;border-radius:6px;margin:1rem 0;object-fit:contain;">
+    <p class="projet-desc" data-fr="Dans ce projet, j'ai conçu un outil de gestion de notes sous Excel intégrant un tableau de bord interactif. L'outil permet de saisir les notes par compétence et par semestre, de visualiser les moyennes sous forme de graphiques et d'afficher automatiquement si l'étudiant valide son année. Il inclut des indicateurs de suivi personnalisés ainsi qu'un profil radar représentant l'évolution de l'étudiant sur l'ensemble de l'année." data-en="In this project, I designed a grade management tool in Excel featuring an interactive dashboard. The tool allows grades to be entered by skill and semester, visualizes averages as charts, and automatically displays whether the student passes the year. It includes personalized tracking indicators as well as a radar chart showing the student's progress throughout the year.">Dans ce projet, j'ai conçu un outil de gestion de notes sous Excel intégrant un tableau de bord interactif. L'outil permet de saisir les notes par compétence et par semestre, de visualiser les moyennes sous forme de graphiques et d'afficher automatiquement si l'étudiant valide son année. Il inclut des indicateurs de suivi personnalisés ainsi qu'un profil radar représentant l'évolution de l'étudiant sur l'ensemble de l'année.</p>
+    <div class="projet-tags"><span class="tag" data-fr="Organisation" data-en="Organisation">Organisation</span><span class="tag" data-fr="Créativité" data-en="Creativity">Créativité</span><span class="tag" data-fr="Autonomie" data-en="Autonomy">Autonomie</span></div>
+    <a href="projet_excel.xlsm" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:1.2rem;background:#CC0000;color:#fff;font-family:Raleway,sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.05em;padding:10px 22px;border-radius:5px;text-decoration:none;" onmouseover="this.style.background='#aa0000'" onmouseout="this.style.background='#CC0000'" data-fr="📊 Télécharger le fichier Excel" data-en="📊 Download Excel file">📊 Télécharger le fichier Excel</a>
+  </div>
+
+  <div class="projet-card">
+    <p class="projet-num" data-fr="Projet 04" data-en="Project 04">Projet 04</p>
+    <h2 class="projet-title" data-fr="Écrans : quels impacts sur les étudiants niortais ?" data-en="Screens: what impact on Niort students?">Écrans : quels impacts sur les étudiants niortais ?</h2>
+    <img src="img_ecrans.png" style="width:100%;border-radius:6px;margin:1rem 0;object-fit:contain;">
+    <p class="projet-desc" data-fr="Dans ce projet mené en binôme, nous avons réalisé une enquête complète auprès de 373 étudiants de l'IUT de Niort sur leurs usages du téléphone portable et leurs conséquences. Nous avons conçu le questionnaire, collecté les données, puis produit deux livrables : un rapport d'analyse détaillé et un tableau de bord visuel. Les résultats montrent que les réseaux sociaux dominent les usages, qu'une majorité des étudiants utilise son téléphone plus de 3h par jour, et qu'un lien significatif existe entre la dépendance au téléphone et les troubles du sommeil ou de la concentration." data-en="In this project carried out as a pair, we conducted a comprehensive survey of 373 students at the IUT of Niort about their mobile phone usage and its consequences. We designed the questionnaire, collected the data, then produced two deliverables: a detailed analysis report and a visual dashboard. Results show that social media dominates usage, that most students use their phone more than 3 hours a day, and that a significant link exists between phone dependency and sleep or concentration disorders.">Dans ce projet mené en binôme, nous avons réalisé une enquête complète auprès de 373 étudiants de l'IUT de Niort sur leurs usages du téléphone portable et leurs conséquences. Nous avons conçu le questionnaire, collecté les données, puis produit deux livrables : un rapport d'analyse détaillé et un tableau de bord visuel. Les résultats montrent que les réseaux sociaux dominent les usages, qu'une majorité des étudiants utilise son téléphone plus de 3h par jour, et qu'un lien significatif existe entre la dépendance au téléphone et les troubles du sommeil ou de la concentration.</p>
+    <div class="projet-tags"><span class="tag" data-fr="Curiosité" data-en="Curiosity">Curiosité</span><span class="tag" data-fr="Analyse" data-en="Analysis">Analyse</span><span class="tag" data-fr="Communication" data-en="Communication">Communication</span></div>
+    <a href="rapport_demographie.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:1.2rem;background:#CC0000;color:#fff;font-family:Raleway,sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.05em;padding:10px 22px;border-radius:5px;text-decoration:none;" onmouseover="this.style.background='#aa0000'" onmouseout="this.style.background='#CC0000'" data-fr="📄 Voir le rapport" data-en="📄 View report">📄 Voir le rapport</a>
+    <a href="tableau_de_bord.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:1.2rem;background:#CC0000;color:#fff;font-family:Raleway,sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.05em;padding:10px 22px;border-radius:5px;text-decoration:none;" onmouseover="this.style.background='#aa0000'" onmouseout="this.style.background='#CC0000'" data-fr="📊 Voir le tableau de bord" data-en="📊 View dashboard">📊 Voir le tableau de bord</a>
+  </div>
+
+  <div class="projet-card">
+    <p class="projet-num" data-fr="Projet 05" data-en="Project 05">Projet 05</p>
+    <h2 class="projet-title" data-fr="Le réarmement démographique en France : peut-on s'inspirer des communes à forte natalité ?" data-en="Demographic rearmament in France: can high birth-rate municipalities inspire national policy?">Le réarmement démographique en France : peut-on s'inspirer des communes à forte natalité ?</h2>
+    <img src="img_demographie.png" style="width:100%;border-radius:6px;margin:1rem 0;object-fit:contain;">
+    <p class="projet-desc" data-fr="Dans ce projet réalisé en binôme, nous avons mené une étude statistique complète sur les communes françaises à forte natalité. À partir des données du Recensement INSEE 2022, nous avons analysé un échantillon de 29 communes appartenant au dernier centile des taux de natalité. L'objectif était d'identifier leurs caractéristiques démographiques, sociales et économiques afin de dégager des pistes concrètes pour inspirer une politique nationale de réarmement démographique." data-en="In this project carried out as a pair, we conducted a comprehensive statistical study on French municipalities with high birth rates. Using data from the INSEE 2022 Census, we analyzed a sample of 29 municipalities in the top centile for birth rates. The objective was to identify their demographic, social and economic characteristics in order to identify concrete avenues to inspire a national demographic policy.">Dans ce projet réalisé en binôme, nous avons mené une étude statistique complète sur les communes françaises à forte natalité. À partir des données du Recensement INSEE 2022, nous avons analysé un échantillon de 29 communes appartenant au dernier centile des taux de natalité. L'objectif était d'identifier leurs caractéristiques démographiques, sociales et économiques afin de dégager des pistes concrètes pour inspirer une politique nationale de réarmement démographique.</p>
+    <div class="projet-tags"><span class="tag" data-fr="Esprit critique" data-en="Critical thinking">Esprit critique</span><span class="tag" data-fr="Coopération" data-en="Cooperation">Coopération</span><span class="tag" data-fr="Rigueur" data-en="Rigour">Rigueur</span></div>
+    <a href="sae_rapport.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:1.2rem;background:#CC0000;color:#fff;font-family:Raleway,sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.05em;padding:10px 22px;border-radius:5px;text-decoration:none;" onmouseover="this.style.background='#aa0000'" onmouseout="this.style.background='#CC0000'" data-fr="📄 Voir le rapport" data-en="📄 View report">📄 Voir le rapport</a>
+  </div>
+
+  <div class="projet-card">
+    <p class="projet-num" data-fr="Projet 06" data-en="Project 06">Projet 06</p>
+    <h2 class="projet-title" data-fr="Prédiction des valeurs foncières par régression linéaire" data-en="Prediction of property values using linear regression">Prédiction des valeurs foncières par régression linéaire</h2>
+    <img src="img_regression.png" style="width:100%;border-radius:6px;margin:1rem 0;object-fit:contain;">
+    <p class="projet-desc" data-fr="Dans ce projet réalisé en binôme, nous avons modélisé le prix de vente de biens immobiliers (appartements et maisons) à partir de leur surface bâtie, en utilisant le langage R. Nous avons segmenté les données par type de bien, commune et saison immobilière afin d'ajuster un modèle de régression linéaire simple par segment. Les coefficients a et b ont été calculés manuellement à partir des formules des moindres carrés, sans recourir aux fonctions automatiques de R. Les résultats ont ensuite été évalués via le coefficient de détermination R² et illustrés par des graphiques nuage de points avec droites de régression. Le modèle final a permis de générer des prédictions sur un jeu de données inconnu et de les exporter au format CSV." data-en="In this project carried out as a pair, we modeled the sale price of real estate (apartments and houses) based on their built area, using the R language. We segmented the data by property type, municipality and real estate season in order to fit a simple linear regression model per segment. The coefficients a and b were calculated manually using least squares formulas, without using R's automatic functions. The results were then evaluated using the coefficient of determination R² and illustrated with scatter plots with regression lines. The final model was used to generate predictions on an unknown dataset and export them as CSV.">Dans ce projet réalisé en binôme, nous avons modélisé le prix de vente de biens immobiliers (appartements et maisons) à partir de leur surface bâtie, en utilisant le langage R. Nous avons segmenté les données par type de bien, commune et saison immobilière afin d'ajuster un modèle de régression linéaire simple par segment. Les coefficients a et b ont été calculés manuellement à partir des formules des moindres carrés, sans recourir aux fonctions automatiques de R. Les résultats ont ensuite été évalués via le coefficient de détermination R² et illustrés par des graphiques nuage de points avec droites de régression. Le modèle final a permis de générer des prédictions sur un jeu de données inconnu et de les exporter au format CSV.</p>
+    <div class="projet-tags"><span class="tag" data-fr="Investissement" data-en="Commitment">Investissement</span><span class="tag" data-fr="Esprit d'équipe" data-en="Team spirit">Esprit d'équipe</span><span class="tag" data-fr="Curiosité intellectuelle" data-en="Intellectual curiosity">Curiosité intellectuelle</span></div>
+    <a href="script_regression_immobiliere.R" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:1.2rem;background:#CC0000;color:#fff;font-family:Raleway,sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.05em;padding:10px 22px;border-radius:5px;text-decoration:none;" onmouseover="this.style.background='#aa0000'" onmouseout="this.style.background='#CC0000'" data-fr="💾 Voir le script R" data-en="💾 View R script">💾 Voir le script R</a>
+    <a href="rapport_regression_immobiliere.docx" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:1.2rem;background:#CC0000;color:#fff;font-family:Raleway,sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.05em;padding:10px 22px;border-radius:5px;text-decoration:none;" onmouseover="this.style.background='#aa0000'" onmouseout="this.style.background='#CC0000'" data-fr="📄 Voir le rapport" data-en="📄 View report">📄 Voir le rapport</a>
+  </div>
+
+  <div class="projet-card">
+    <p class="projet-num" data-fr="Projet 07" data-en="Project 07">Projet 07</p>
+    <h2 class="projet-title" data-fr="Montauban et sa ville jumelée : Avola" data-en="Montauban and its twin city: Avola">Montauban et sa ville jumelée : Avola</h2>
+    <img src="img_montauban.png" style="width:100%;border-radius:6px;margin:1rem 0;object-fit:contain;">
+    <p class="projet-desc" data-fr="Dans le cadre de ce projet, nous avons présenté l'économie et la culture d'un territoire. Notre choix s'est porté sur la ville de Montauban et sa ville jumelée Avola, pour son économie fortement liée à son attractivité et sa richesse culturelle. La présentation comportait une partie en français et une autre en anglais, ce qui nous a permis de mobiliser nos compétences linguistiques en situation professionnelle." data-en="As part of this project, we presented the economy and culture of a territory. We chose the city of Montauban and its twin city Avola, for its economy closely tied to its attractiveness and cultural richness. The presentation included a section in French and another in English, which allowed us to use our language skills in a professional context.">Dans le cadre de ce projet, nous avons présenté l'économie et la culture d'un territoire. Notre choix s'est porté sur la ville de Montauban et sa ville jumelée Avola, pour son économie fortement liée à son attractivité et sa richesse culturelle. La présentation comportait une partie en français et une autre en anglais, ce qui nous a permis de mobiliser nos compétences linguistiques en situation professionnelle.</p>
+    <div class="projet-tags"><span class="tag" data-fr="Recherche" data-en="Research">Recherche</span><span class="tag" data-fr="Travail en équipe" data-en="Teamwork">Travail en équipe</span><span class="tag" data-fr="Communication" data-en="Communication">Communication</span></div>
+    <a href="presentation_montauban.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:1.2rem;background:#CC0000;color:#fff;font-family:Raleway,sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.05em;padding:10px 22px;border-radius:5px;text-decoration:none;" onmouseover="this.style.background='#aa0000'" onmouseout="this.style.background='#CC0000'" data-fr="📄 Voir la présentation" data-en="📄 View presentation">📄 Voir la présentation</a>
+  </div>
+
+  <div class="projet-card">
+    <p class="projet-num" data-fr="Projet 08" data-en="Project 08">Projet 08</p>
+    <h2 class="projet-title" data-fr="Conception d'un questionnaire sur les réseaux sociaux" data-en="Designing a survey on social media">Conception d'un questionnaire sur les réseaux sociaux</h2>
+    <img src="img_questionnaire.png" style="width:50%;border-radius:6px;margin:1rem 0;object-fit:contain;display:block;margin-left:auto;margin-right:auto;">
+    <p class="projet-desc" data-fr="Dans ce projet, nous avons conçu un questionnaire destiné à mesurer les habitudes et les motivations d'utilisation des réseaux sociaux. Le travail a consisté à formuler des questions claires et neutres, à choisir les bons types de réponses (échelles de Likert, choix multiples) et à structurer le questionnaire de façon logique pour faciliter la réponse et garantir la qualité des données collectées." data-en="In this project, we designed a questionnaire to measure social media usage habits and motivations. The work involved formulating clear and neutral questions, choosing the right types of responses (Likert scales, multiple choice) and structuring the questionnaire logically to facilitate answering and ensure the quality of the data collected.">Dans ce projet, nous avons conçu un questionnaire destiné à mesurer les habitudes et les motivations d'utilisation des réseaux sociaux. Le travail a consisté à formuler des questions claires et neutres, à choisir les bons types de réponses (échelles de Likert, choix multiples) et à structurer le questionnaire de façon logique pour faciliter la réponse et garantir la qualité des données collectées.</p>
+    <div class="projet-tags">
+      <span class="tag" data-fr="Méthode d'enquête" data-en="Survey method">Méthode d'enquête</span>
+      <span class="tag" data-fr="Précision" data-en="Precision">Précision</span>
+      <span class="tag" data-fr="Esprit critique" data-en="Critical thinking">Esprit critique</span>
+    </div>
+  </div>
+
+  <p class="search-no-result" id="no-result" data-fr="Aucun projet trouvé." data-en="No project found.">Aucun projet trouvé.</p>
+
+</div>
+
+<footer id="contact">
+  <p class="footer-label" data-fr="Contact" data-en="Contact">Contact</p>
+  <div class="footer-icons">
+    <a class="footer-icon icon-mail" href="#" onclick="copyText('bouteillerclemen@gmail.com');return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:1em;height:1em;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+    <a class="footer-icon" href="#" onclick="handlePhone();return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:1em;height:1em;" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></a>
+    <a class="footer-icon" href="https://www.linkedin.com/in/cl%C3%A9ment-bouteiller-788163401/" target="_blank">in</a>
+  </div>
+  <div class="footer-logo-img">
+    <span style="font-family:'Raleway',sans-serif;font-size:.9rem;font-weight:800;color:#fff;letter-spacing:.06em;">BUT <span style="color:var(--accent);">Science des Données</span></span>
+  </div>
+  <p class="footer-copy">© 2026 Clément Bouteiller · BUT Science des Données</p>
+</footer>
+
+<div id="toast" style="position:fixed;bottom:60px;right:30px;transform:translateY(20px);background:var(--dark);color:#fff;font-family:Raleway,sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.04em;padding:12px 28px;border-radius:4px;opacity:0;transition:opacity .25s,transform .25s;z-index:999;border-left:3px solid var(--accent);"></div>
+<style>#toast.show { opacity:1 !important; transform:translateY(0) !important; }</style>
+<script>
+function handlePhone() {
+  if (window.innerWidth <= 860) {
+    window.location.href = "tel:+33768388726";
+  } else {
+    copyText("0768388726");
+  }
+}
+function copyText(text) {
+  var t = document.getElementById("toast");
+  t.textContent = text;
+  t.style.opacity = "0";
+  t.style.transform = "translateY(20px)";
+  t.classList.add("show");
+  setTimeout(function(){ t.classList.remove("show"); }, 3000);
+}
+</script>
+<script src="lang.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+// initLang géré automatiquement par lang.js
+
+  var input = document.getElementById('search-input');
+  var cards = document.querySelectorAll('.projet-card');
+  var noResult = document.getElementById('no-result');
+
+  // Sync placeholder with lang toggle
+  var toggle = document.getElementById('lang-toggle');
+  function syncPlaceholder() {
+    var lang = localStorage.getItem('lang') || 'fr';
+    input.placeholder = lang === 'en'
+      ? input.getAttribute('data-placeholder-en')
+      : input.getAttribute('data-placeholder-fr');
+  }
+  if (toggle) toggle.addEventListener('change', function() { setTimeout(syncPlaceholder, 10); });
+  syncPlaceholder();
+
+  function fuzzyMatch(text, query) {
+    // Supprime les espaces en trop et découpe en mots
+    var words = query.replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
+    return words.every(function(word) {
+      // Recherche floue : tolère 1 erreur si mot > 3 lettres, 0 sinon
+      if (text.includes(word)) return true;
+      if (word.length <= 4) return false;
+      // Distance de Levenshtein simplifiée
+      for (var i = 0; i <= text.length - word.length + 1; i++) {
+        var chunk = text.substr(i, word.length);
+        var diff = 0;
+        for (var j = 0; j < word.length; j++) {
+          if (chunk[j] !== word[j]) diff++;
+          if (diff > 1) break;
+        }
+        if (diff <= 2) return true;
+      }
+      return false;
+    });
+  }
+
+  input.addEventListener('input', function() {
+    var q = this.value.toLowerCase();
+    var visible = 0;
+    cards.forEach(function(card) {
+      var text = card.textContent.toLowerCase();
+      card.querySelectorAll('[data-fr]').forEach(function(el) {
+        text += ' ' + (el.getAttribute('data-fr') || '').toLowerCase();
+        text += ' ' + (el.getAttribute('data-en') || '').toLowerCase();
+      });
+      if (!q.trim() || fuzzyMatch(text, q)) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    noResult.style.display = visible === 0 ? 'block' : 'none';
+  });
+</script>
+<script>
+// Burger menu
+var burger = document.getElementById('burger');
+var navMobile = document.getElementById('nav-mobile');
+if (burger) {
+  burger.addEventListener('click', function() {
+    burger.classList.toggle('open');
+    navMobile.classList.toggle('open');
+  });
+}
+</script>
+</body>
+</html>
